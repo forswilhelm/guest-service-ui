@@ -1,20 +1,10 @@
-import { useState } from "react";
-import "./app.css";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { routes } from "@/routes/routes";
 
-function App() {
-	const [count, setCount] = useState(0);
+const router = createBrowserRouter(routes, {
+	basename: "/TODO_REPLACE_ME",
+});
 
-	return (
-		<>
-			<h1>Vite + React</h1>
-			<div className="card">
-				<button onClick={() => setCount((count) => count + 1)}>count is {count}</button>
-				<p>
-					Edit <code>src/app.tsx</code> and save to test HMR
-				</p>
-			</div>
-		</>
-	);
+export default function App() {
+	return <RouterProvider router={router} />;
 }
-
-export default App;
