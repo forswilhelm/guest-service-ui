@@ -11,7 +11,7 @@ RUN cd /build \
     && npm ci
 
 RUN cd /build \
-    && npm run build-"${env:?}" \
+    && npm run build:"${env:?}" \
     && mkdir -p /app \
     && mv /build/dist /app
 
