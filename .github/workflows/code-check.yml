@@ -1,0 +1,41 @@
+name: ✨ Check code quality (lint, format, etc)
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+concurrency:
+  group: test-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  frontend-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Read node and npm versions from package.json
+        uses: skjnldsv/read-package-engines-version-actions@v3
+        id: package-engines-versions
+
+      - name: Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ steps.package-engines-versions.outputs.nodeVersion }}
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Prettier
+        run: npm run prettier
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Find unused code with Knip
+        run: npm run knip
+
+      - name: TypeScript compiler
+        run: npm run tsc
