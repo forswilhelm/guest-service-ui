@@ -1,0 +1,3 @@
+{
+	"extends": "@caspeco/eslint-config/frontend-react"
+}

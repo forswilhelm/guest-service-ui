@@ -23,6 +23,7 @@ This [GitHub repository template](https://docs.github.com/en/repositories/creati
 > - It ensures well-informed technology and convention choices through collective decision-making, eliminating repetitive discussions for each new project.
 >
 > The meeting notes from technology evaluation meetings can be found here:
+>
 > 1. https://caspeco.atlassian.net/wiki/spaces/C360/pages/3910959132/2024-01-31+Frontendramverk-utv+rdering
 > 2. https://caspeco.atlassian.net/wiki/spaces/C360/pages/4064346154/2024-04-10+Utv+rdering+NextJS
 >
