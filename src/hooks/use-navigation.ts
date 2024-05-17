@@ -1,20 +1,17 @@
 import { NavigationMenuProps, NavigationItemProps } from "@/models/menu";
 import { MouseEvent } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-// import { useAuth } from "./use-auth";
 const isExternalLink = (href: string) => {
 	return href.startsWith("http");
 };
 
 export const useNavigation = () => {
-	// const { user, logOut } = useAuth();
 	const navigate = useNavigate();
 	const location = useLocation();
 
 	const getTopNavigationItems = (): NavigationItemProps[] => {
 		return [
 			{
-				// text: user?.name ?? "Sign in",
 				text: "Någon Användare",
 				href: "#",
 				icon: "User",
@@ -90,7 +87,7 @@ export const useNavigation = () => {
 
 			switch (id) {
 				case "logout":
-					// logOut();
+					console.log("TODO: Implement log out here");
 					return;
 			}
 		}

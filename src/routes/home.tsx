@@ -18,7 +18,8 @@ export default function Home() {
 			<List paddingLeft={ThemeSpaceVariable.Medium}>
 				<ListItem>1. Search for "TODO" in the source code and fix all occurrences</ListItem>
 				<ListItem>
-					2. Generate TypeScript types from your backend's Swagger file (see other RMS projects)
+					2. Generate TypeScript types and an API client from your backend's Swagger file (see other RMS
+					projects)
 				</ListItem>
 				<ListItem>3. Implement auth using the generated API client and SWR</ListItem>
 			</List>
