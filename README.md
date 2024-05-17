@@ -8,7 +8,7 @@
 This [GitHub repository template](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template) is the standard for developing new front-ends at Caspeco. It is a **living repository** that outlines our chosen technologies and best practices for front-end applications.
 
 > [!IMPORTANT]
-> Make an effort to follow the template without undoing decisions made here (e.g. changing the Router, modifying Prettier settings, etc). To propose changes or additions, please [create an issue](https://github.com/Caspeco/Frontend-Template/issues) or [open a pull request](https://github.com/Caspeco/Frontend-Template/pulls) in the template repository.
+> To propose changes or additions to our default front-end tech stack, please [create an issue](https://github.com/Caspeco/Frontend-Template/issues) or [open a pull request](https://github.com/Caspeco/Frontend-Template/pulls) in the template repository.
 >
 > <details>
 >    <summary>
