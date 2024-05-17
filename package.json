@@ -27,8 +27,7 @@
 		"raygun4js": "^3.0.1",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
-		"react-router-dom": "^6.23.1",
-		"swr": "^2.2.5"
+		"react-router-dom": "^6.23.1"
 	},
 	"devDependencies": {
 		"@caspeco/eslint-config": "^1.0.3",
