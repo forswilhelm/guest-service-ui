@@ -2,16 +2,18 @@ import { ThemeSpaceVariable } from "@caspeco/casper-ui-library.base-ui.theme";
 import { Providers } from "./providers";
 import { Outlet } from "react-router-dom";
 import NavigationMenu from "@/components/navigation-menu";
+import { Flex } from "@caspeco/casper-ui-library.components.flex";
+import { Box } from "@caspeco/casper-ui-library.components.box";
 
 export default function RootLayout() {
 	return (
 		<Providers>
-			<div style={{ display: "flex", flexDirection: "row", height: "100%" }}>
+			<Flex height="100%">
 				<NavigationMenu />
-				<main style={{ padding: ThemeSpaceVariable.Large, overflow: "auto" }}>
+				<Box as="main" padding={ThemeSpaceVariable.Large} overflow="auto">
 					<Outlet />
-				</main>
-			</div>
+				</Box>
+			</Flex>
 		</Providers>
 	);
 }
