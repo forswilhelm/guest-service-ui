@@ -1,2 +1,14 @@
+name: 🔨 Deploy to Dev
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Do nothing
+        run: echo TODO
 # TODO
 # Check some other RMS project (e.g. PRIM, CustomerConnect, AccessManagement) for inspiration

@@ -1,2 +1,13 @@
+name: 🦄 Create Release Candidate
+on:
+  workflow_dispatch:
+
+jobs:
+  release-candidate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Do nothing
+        run: echo TODO
 # TODO
 # Check some other RMS project (e.g. PRIM, CustomerConnect, AccessManagement) for inspiration
