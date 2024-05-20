@@ -19,7 +19,7 @@
 		"tsc": "tsc"
 	},
 	"dependencies": {
-		"@caspeco/casper-ui-library.base-ui.theme": "^2.2.3",
+		"@caspeco/casper-ui-library.base-ui.theme": "^2.2.4",
 		"@caspeco/casper-ui-library.components.alert": "^1.2.4",
 		"@caspeco/casper-ui-library.components.box": "^2.1.4",
 		"@caspeco/casper-ui-library.components.flex": "^1.1.4",
