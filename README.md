@@ -59,6 +59,9 @@ After creating a new repository from this template, make sure to change the `nam
 
 ## Learn More
 
+> [!TIP]
+> The [npm-check-updates](https://www.npmjs.com/package/npm-check-updates) package is useful for finding outdated dependencies and updating them in bulk. This is especially useful when trying to upgrade all the Casper UI 2.0 components!
+
 This project uses:
 
 - [React](https://react.dev/)
