@@ -47,6 +47,9 @@ After creating a new repository from this template, make sure to change the `nam
 > [!NOTE]
 > When you open this project in Visual Studio Code, you should get a notification about recommended extensions (unless they are already installed). Make sure to install them.
 
+> [!TIP]
+> The [npm-check-updates](https://www.npmjs.com/package/npm-check-updates) package is useful for finding outdated dependencies and updating them in bulk. This is especially useful when trying to upgrade all the Casper UI 2.0 components!
+
 1. Clone this repository
 2. Install dependencies
    ```bash
@@ -58,9 +61,6 @@ After creating a new repository from this template, make sure to change the `nam
    ```
 
 ## Learn More
-
-> [!TIP]
-> The [npm-check-updates](https://www.npmjs.com/package/npm-check-updates) package is useful for finding outdated dependencies and updating them in bulk. This is especially useful when trying to upgrade all the Casper UI 2.0 components!
 
 This project uses:
 
