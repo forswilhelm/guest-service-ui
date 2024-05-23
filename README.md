@@ -70,3 +70,4 @@ This project uses:
 - [ESLint](https://eslint.org/) with the [Caspeco config](https://github.com/Caspeco/eslint-config)
 - [Prettier](https://prettier.io/) with the [Caspeco config](https://github.com/Caspeco/prettier-config)
 - [Casper UI 2.0](https://github.com/Caspeco/casper-ui-library) installed from [bit](https://bit.cloud/caspeco/casper-ui-library)
+- [React Router](https://reactrouter.com/)
