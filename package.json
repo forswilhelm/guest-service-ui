@@ -34,7 +34,7 @@
 	},
 	"devDependencies": {
 		"@caspeco/eslint-config": "^2.0.0",
-		"@caspeco/prettier-config": "^1.0.4",
+		"@caspeco/prettier-config": "^1.0.5",
 		"@types/raygun4js": "^3.0.0",
 		"@types/react": "^18.3.5",
 		"@types/react-dom": "^18.3.0",
