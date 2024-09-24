@@ -33,7 +33,7 @@
 		"react-router-dom": "^6.26.2"
 	},
 	"devDependencies": {
-		"@caspeco/eslint-config": "^2.0.0",
+		"@caspeco/eslint-config": "^2.1.1",
 		"@caspeco/prettier-config": "^1.0.5",
 		"@types/raygun4js": "^3.0.0",
 		"@types/react": "^18.3.8",

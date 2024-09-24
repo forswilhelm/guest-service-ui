@@ -1,5 +1,5 @@
 import { reactConfig } from "@caspeco/eslint-config";
 
-const config = [...reactConfig];
+const config = [{ ignores: ["eslint.config.js"] }, ...reactConfig];
 
 export default config;

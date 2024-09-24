@@ -24,9 +24,9 @@ function getEnvironment(name?: string): Environment {
 }
 
 const config: Config = {
-	environment: getEnvironment(import.meta.env.VITE_ENV_NAME),
-	menuBaseUrl: import.meta.env.VITE_MENU_URL,
-	apiBaseUrl: import.meta.env.VITE_API_URL,
+	environment: getEnvironment(import.meta.env.VITE_ENV_NAME as string),
+	menuBaseUrl: import.meta.env.VITE_MENU_URL as string,
+	apiBaseUrl: import.meta.env.VITE_API_URL as string,
 };
 
 export default config;
