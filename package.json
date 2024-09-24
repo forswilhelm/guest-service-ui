@@ -36,7 +36,7 @@
 		"@caspeco/eslint-config": "^2.0.0",
 		"@caspeco/prettier-config": "^1.0.5",
 		"@types/raygun4js": "^3.0.0",
-		"@types/react": "^18.3.5",
+		"@types/react": "^18.3.8",
 		"@types/react-dom": "^18.3.0",
 		"@vitejs/plugin-react-swc": "^3.7.0",
 		"@vitest/coverage-v8": "^2.1.1",
