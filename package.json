@@ -24,12 +24,12 @@
 		"tsc": "tsc"
 	},
 	"dependencies": {
-		"@caspeco/casper-ui-library.base-ui.theme": "^2.4.4",
-		"@caspeco/casper-ui-library.components.alert": "^1.2.25",
-		"@caspeco/casper-ui-library.components.box": "^2.1.24",
-		"@caspeco/casper-ui-library.components.flex": "^1.1.24",
-		"@caspeco/casper-ui-library.components.heading": "^1.1.24",
-		"@caspeco/casper-ui-library.components.list": "^0.1.24",
+		"@caspeco/casper-ui-library.base-ui.theme": "^2.4.8",
+		"@caspeco/casper-ui-library.components.alert": "^1.2.29",
+		"@caspeco/casper-ui-library.components.box": "^2.1.28",
+		"@caspeco/casper-ui-library.components.flex": "^1.1.28",
+		"@caspeco/casper-ui-library.components.heading": "^1.1.28",
+		"@caspeco/casper-ui-library.components.list": "^0.1.28",
 		"@caspeco/casper-ui-library.components.text": "^1.1.24",
 		"raygun4js": "^3.1.1",
 		"react": "^18.3.1",
