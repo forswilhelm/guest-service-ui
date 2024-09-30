@@ -4,6 +4,10 @@
 	"version": "0.0.0",
 	"prettier": "@caspeco/prettier-config",
 	"type": "module",
+	"engines": {
+		"node": ">=20",
+		"npm": ">=9"
+	},
 	"scripts": {
 		"dev": "vite --mode dev",
 		"build:dev": "vite build --mode dev",
@@ -33,8 +37,8 @@
 		"react-router-dom": "^6.26.2"
 	},
 	"devDependencies": {
-		"@caspeco/eslint-config": "^2.1.1",
-		"@caspeco/prettier-config": "^1.0.5",
+		"@caspeco/eslint-config": "^2.1.2",
+		"@caspeco/prettier-config": "^1.0.6",
 		"@types/raygun4js": "^3.0.0",
 		"@types/react": "^18.3.10",
 		"@types/react-dom": "^18.3.0",
