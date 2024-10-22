@@ -16,6 +16,14 @@ updates:
           - "major"
           - "minor"
           - "patch"
+      non-major-updates:
+        patterns:
+          - "*"
+        exclude-patterns:
+          - "@caspeco/casper-ui-library*"
+        update-types:
+          - "minor"
+          - "patch"
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
