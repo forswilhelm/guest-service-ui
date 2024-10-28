@@ -40,15 +40,15 @@
 		"@caspeco/eslint-config": "^3.1.0",
 		"@caspeco/prettier-config": "^1.0.6",
 		"@types/raygun4js": "^3.0.0",
-		"@types/react": "^18.3.11",
+		"@types/react": "^18.3.12",
 		"@types/react-dom": "^18.3.1",
 		"@vitejs/plugin-react-swc": "^3.7.1",
 		"@vitest/coverage-v8": "^2.1.3",
 		"eslint": "^9.13.0",
-		"knip": "^5.33.3",
+		"knip": "^5.34.1",
 		"prettier": "^3.3.3",
 		"typescript": "^5.6.3",
-		"vite": "^5.4.9",
+		"vite": "^5.4.10",
 		"vite-tsconfig-paths": "^5.0.1",
 		"vitest": "^2.0.5"
 	}
