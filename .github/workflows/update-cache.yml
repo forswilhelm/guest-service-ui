@@ -1,23 +1,17 @@
-name: 🧪 Run tests
+name: "📦 Update npm cache"
+
 on:
-  pull_request:
-    branches:
-      - main
-    types: [opened, synchronize, reopened]
   push:
     branches:
-      - main
-
-concurrency:
-  group: build-${{ github.event.pull_request.number || github.ref }}
-  cancel-in-progress: true
+      - "main"
 
 jobs:
-  test:
-    name: Unit Tests
+  build-npm-cache:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
+
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v4
 
       - name: Read node and npm versions from package.json
@@ -34,7 +28,7 @@ jobs:
         shell: bash
         run: echo "dir=$(npm config get cache)" >> ${GITHUB_OUTPUT}
 
-      - name: Cache dependencies
+      - name: Test cache hit
         uses: actions/cache@v4
         id: npm-cache
         with:
@@ -43,13 +37,6 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
 
-      - name: Install dependencies
-        run: npm i
-
-      - name: Run unit tests with coverage
-        run: npm run test:ci
-#      - name: Run codacy-coverage-reporter
-#        uses: codacy/codacy-coverage-reporter-action@v1
-#        with:
-#          project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
-#          coverage-reports: .coverage/lcov.info
+      - name: Install dependencies if necessary
+        if: steps.npm-cache.outputs.cache-hit != 'true'
+        run: npm ci # Cache not hit, perform fresh install to build new cache
