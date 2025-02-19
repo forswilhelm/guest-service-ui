@@ -31,6 +31,11 @@ export const useNavigation = () => {
 			href: "/example",
 			icon: "Remove",
 		},
+		{
+			text: "GuestService",
+			href: "/guest-service",
+			icon: "Users",
+		},
 	];
 
 	const getSharedResources = (): NavigationItemProps[] => {
@@ -87,7 +92,7 @@ export const useNavigation = () => {
 
 			switch (id) {
 				case "logout":
-					console.log("TODO: Implement log out here");
+					console.log(": Implement lTODOog out here");
 					return;
 			}
 		}

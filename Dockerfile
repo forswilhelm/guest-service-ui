@@ -1,5 +1,5 @@
 ARG env="dev"
-ARG basepath="TODO_REPLACE_ME"
+ARG basepath=""
 
 FROM node:22-alpine AS node
 ARG env
