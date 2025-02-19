@@ -45,7 +45,7 @@
 		"swr": "^2.3.2"
 	},
 	"devDependencies": {
-		"@caspeco/eslint-config": "^3.2.2",
+		"@caspeco/eslint-config": "^4.0.0",
 		"@caspeco/prettier-config": "^1.0.6",
 		"@types/react": "^18.3.12",
 		"@types/react-dom": "^18.3.1",
