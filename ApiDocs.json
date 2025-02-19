@@ -1,0 +1,1613 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Guest service",
+    "description": "Caspeco guest service",
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "https://guest.dev.caspeco.net",
+      "description": "Generated server url"
+    }
+  ],
+  "paths": {
+    "/v1/loyalties/collectable-rewards": {
+      "get": {
+        "tags": [
+          "Loyalty"
+        ],
+        "operationId": "getCollectableRewards",
+        "parameters": [
+          {
+            "name": "system",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "guestIdentifier",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/RewardListResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Loyalty"
+        ],
+        "operationId": "collectCollectableRewards",
+        "parameters": [
+          {
+            "name": "system",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "loyaltyTransactionId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/RewardListResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/guests/{identifierOrEmail}": {
+      "get": {
+        "tags": [
+          "Guest"
+        ],
+        "operationId": "getGuest",
+        "parameters": [
+          {
+            "name": "system",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "identifierOrEmail",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/GuestResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Guest"
+        ],
+        "operationId": "updateGuest",
+        "parameters": [
+          {
+            "name": "system",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "identifierOrEmail",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateGuestRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/GuestResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Guest"
+        ],
+        "operationId": "deleteGuest",
+        "parameters": [
+          {
+            "name": "system",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "identifierOrEmail",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/v1/admin/loyalties/{id}": {
+      "put": {
+        "tags": [
+          "Loyalty"
+        ],
+        "operationId": "updateConfiguration",
+        "parameters": [
+          {
+            "name": "system",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PiggyConfigRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/PiggyConfigResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Loyalty"
+        ],
+        "operationId": "deleteConfiguration",
+        "parameters": [
+          {
+            "name": "system",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/v1/admin/loyalties/shops": {
+      "get": {
+        "tags": [
+          "Loyalty"
+        ],
+        "operationId": "getPlaceShops",
+        "parameters": [
+          {
+            "name": "system",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlacePiggyShopListResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Loyalty"
+        ],
+        "operationId": "replaceAllPlaceShops",
+        "parameters": [
+          {
+            "name": "system",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PlacePiggyShopListRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlacePiggyShopListResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Loyalty"
+        ],
+        "operationId": "createPlaceShop",
+        "parameters": [
+          {
+            "name": "system",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PlacePiggyShopRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlacePiggyShopResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/admin/loyalties/shops/{id}": {
+      "get": {
+        "tags": [
+          "Loyalty"
+        ],
+        "operationId": "getPlaceShops_1",
+        "parameters": [
+          {
+            "name": "system",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlacePiggyShopResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Loyalty"
+        ],
+        "operationId": "updatePlaceShop",
+        "parameters": [
+          {
+            "name": "system",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PlacePiggyShopRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlacePiggyShopResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Loyalty"
+        ],
+        "operationId": "deletePlaceShop",
+        "parameters": [
+          {
+            "name": "system",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/v1/loyalties/voucher/release": {
+      "post": {
+        "tags": [
+          "Loyalty"
+        ],
+        "operationId": "releaseVoucher",
+        "parameters": [
+          {
+            "name": "system",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "guestIdentifier",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "code",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/VoucherStatusResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/loyalties/voucher/lock": {
+      "post": {
+        "tags": [
+          "Loyalty"
+        ],
+        "operationId": "lockVoucher",
+        "parameters": [
+          {
+            "name": "system",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "guestIdentifier",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "code",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/VoucherStatusResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/loyalties/callbacks": {
+      "post": {
+        "tags": [
+          "Loyalty"
+        ],
+        "operationId": "loyaltyCallback",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CallbackRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/v1/guests": {
+      "get": {
+        "tags": [
+          "Guest"
+        ],
+        "operationId": "getGuests",
+        "parameters": [
+          {
+            "name": "system",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/GuestListResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Guest"
+        ],
+        "operationId": "createGuest",
+        "parameters": [
+          {
+            "name": "system",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateGuestRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/GuestResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/admin/loyalties": {
+      "get": {
+        "tags": [
+          "Loyalty"
+        ],
+        "operationId": "getConfiguration",
+        "parameters": [
+          {
+            "name": "system",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/PiggyConfigResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Loyalty"
+        ],
+        "operationId": "createConfiguration",
+        "parameters": [
+          {
+            "name": "system",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PiggyConfigRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/PiggyConfigResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/loyalties": {
+      "get": {
+        "tags": [
+          "Loyalty"
+        ],
+        "operationId": "getLoyaltyStatus",
+        "parameters": [
+          {
+            "name": "system",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/StatusResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/loyalties/vouchers": {
+      "get": {
+        "tags": [
+          "Loyalty"
+        ],
+        "operationId": "collectVouchers",
+        "parameters": [
+          {
+            "name": "system",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "guestIdentifier",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/RewardListResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/loyalties/voucher": {
+      "get": {
+        "tags": [
+          "Loyalty"
+        ],
+        "operationId": "collectVoucher",
+        "parameters": [
+          {
+            "name": "system",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "guestIdentifier",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "code",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/RewardListResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/loyalties/updateCampaign": {
+      "get": {
+        "tags": [
+          "Loyalty"
+        ],
+        "operationId": "updateCampaign",
+        "parameters": [
+          {
+            "name": "system",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "contactId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "code",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/RewardListResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/loyalties/tiers": {
+      "get": {
+        "tags": [
+          "Loyalty"
+        ],
+        "operationId": "getTiers",
+        "parameters": [
+          {
+            "name": "system",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/TierListResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/loyalties/rewards": {
+      "get": {
+        "tags": [
+          "Loyalty"
+        ],
+        "operationId": "getRewards",
+        "parameters": [
+          {
+            "name": "system",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/RewardListResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/loyalties/promotions": {
+      "get": {
+        "tags": [
+          "Loyalty"
+        ],
+        "operationId": "getPromotions",
+        "parameters": [
+          {
+            "name": "system",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/PromotionListResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/loyalties/creditBalance": {
+      "get": {
+        "tags": [
+          "Loyalty"
+        ],
+        "operationId": "getCreditBalance",
+        "parameters": [
+          {
+            "name": "system",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "contactId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContactCreditBalanceResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/admin/loyalties/piggy-shops": {
+      "get": {
+        "tags": [
+          "Loyalty"
+        ],
+        "operationId": "getPiggyShops",
+        "parameters": [
+          {
+            "name": "system",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/PiggyShopListResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "RewardListResponse": {
+        "required": [
+          "rewardList"
+        ],
+        "type": "object",
+        "properties": {
+          "rewardList": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RewardResponse"
+            }
+          }
+        }
+      },
+      "RewardResponse": {
+        "required": [
+          "id",
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "expiresAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "loyaltyTransactionId": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "ACTIVE",
+              "LOCKED",
+              "NOT_FOUND",
+              "RELEASED",
+              "UNKNOWN_STATUS",
+              "NO_VOUCHER_ID_FOUND",
+              "REDEEMED",
+              "EXPIRED",
+              "DEACTIVATED",
+              "INACTIVE"
+            ]
+          }
+        }
+      },
+      "UpdateGuestRequest": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "msisdn": {
+            "type": "string"
+          },
+          "locale": {
+            "type": "string"
+          }
+        }
+      },
+      "GuestResponse": {
+        "required": [
+          "emailAddress",
+          "identifier",
+          "locale",
+          "loyaltyEnabled",
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "emailAddress": {
+            "type": "string"
+          },
+          "identifier": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "msisdn": {
+            "type": "string"
+          },
+          "locale": {
+            "type": "object",
+            "properties": {
+              "language": {
+                "type": "string"
+              },
+              "displayName": {
+                "type": "string"
+              },
+              "country": {
+                "type": "string"
+              },
+              "variant": {
+                "type": "string"
+              },
+              "script": {
+                "type": "string"
+              },
+              "unicodeLocaleAttributes": {
+                "uniqueItems": true,
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "unicodeLocaleKeys": {
+                "uniqueItems": true,
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "displayLanguage": {
+                "type": "string"
+              },
+              "displayScript": {
+                "type": "string"
+              },
+              "displayCountry": {
+                "type": "string"
+              },
+              "displayVariant": {
+                "type": "string"
+              },
+              "extensionKeys": {
+                "uniqueItems": true,
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "iso3Language": {
+                "type": "string"
+              },
+              "iso3Country": {
+                "type": "string"
+              }
+            }
+          },
+          "loyaltyEnabled": {
+            "type": "boolean"
+          },
+          "externalLoyaltyId": {
+            "type": "string"
+          },
+          "loyalty": {
+            "$ref": "#/components/schemas/Loyalty"
+          },
+          "lastPurchaseTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "createdDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedDate": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "Loyalty": {
+        "required": [
+          "currentPoints",
+          "emailAddress",
+          "name",
+          "points",
+          "totalPoints",
+          "uuid"
+        ],
+        "type": "object",
+        "properties": {
+          "uuid": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "emailAddress": {
+            "type": "string"
+          },
+          "points": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalPoints": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "currentPoints": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "tier": {
+            "$ref": "#/components/schemas/Tier"
+          }
+        }
+      },
+      "Tier": {
+        "required": [
+          "id",
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "imageUrl": {
+            "type": "string"
+          }
+        }
+      },
+      "PiggyConfigRequest": {
+        "required": [
+          "clientId",
+          "clientSecret"
+        ],
+        "type": "object",
+        "properties": {
+          "clientId": {
+            "type": "string"
+          },
+          "clientSecret": {
+            "type": "string"
+          }
+        }
+      },
+      "PiggyConfigResponse": {
+        "required": [
+          "clientId",
+          "createdDate",
+          "id",
+          "maskedClientSecret",
+          "updatedDate"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "clientId": {
+            "type": "string"
+          },
+          "maskedClientSecret": {
+            "type": "string"
+          },
+          "createdDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedDate": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "PlacePiggyShopListRequest": {
+        "required": [
+          "shopList"
+        ],
+        "type": "object",
+        "properties": {
+          "shopList": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PlacePiggyShopRequest"
+            }
+          }
+        }
+      },
+      "PlacePiggyShopRequest": {
+        "required": [
+          "placeId",
+          "shopId"
+        ],
+        "type": "object",
+        "properties": {
+          "placeId": {
+            "type": "string"
+          },
+          "shopId": {
+            "type": "string"
+          }
+        }
+      },
+      "PlacePiggyShopListResponse": {
+        "required": [
+          "shopList"
+        ],
+        "type": "object",
+        "properties": {
+          "shopList": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PlacePiggyShopResponse"
+            }
+          }
+        }
+      },
+      "PlacePiggyShopResponse": {
+        "required": [
+          "createdDate",
+          "id",
+          "placeId",
+          "shopId",
+          "updatedDate"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "placeId": {
+            "type": "string"
+          },
+          "shopId": {
+            "type": "string"
+          },
+          "createdDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedDate": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "VoucherStatusResponse": {
+        "required": [
+          "status"
+        ],
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": [
+              "ACTIVE",
+              "LOCKED",
+              "NOT_FOUND",
+              "RELEASED",
+              "UNKNOWN_STATUS",
+              "NO_VOUCHER_ID_FOUND",
+              "REDEEMED",
+              "EXPIRED",
+              "DEACTIVATED",
+              "INACTIVE"
+            ]
+          }
+        }
+      },
+      "CallbackRequest": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/Data"
+          }
+        }
+      },
+      "Contact": {
+        "required": [
+          "uuid"
+        ],
+        "type": "object",
+        "properties": {
+          "uuid": {
+            "type": "string"
+          }
+        }
+      },
+      "Data": {
+        "type": "object",
+        "properties": {
+          "contact": {
+            "$ref": "#/components/schemas/Contact"
+          }
+        }
+      },
+      "CreateGuestRequest": {
+        "required": [
+          "emailAddress",
+          "locale",
+          "loyaltyEnabled",
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "emailAddress": {
+            "type": "string"
+          },
+          "msisdn": {
+            "type": "string"
+          },
+          "locale": {
+            "type": "string"
+          },
+          "loyaltyEnabled": {
+            "type": "boolean"
+          }
+        }
+      },
+      "StatusResponse": {
+        "required": [
+          "status"
+        ],
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": [
+              "ACTIVE",
+              "INACTIVE"
+            ]
+          }
+        }
+      },
+      "TierListResponse": {
+        "required": [
+          "tierList"
+        ],
+        "type": "object",
+        "properties": {
+          "tierList": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TierResponse"
+            }
+          }
+        }
+      },
+      "TierResponse": {
+        "required": [
+          "id",
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          }
+        }
+      },
+      "PromotionListResponse": {
+        "required": [
+          "promotionList"
+        ],
+        "type": "object",
+        "properties": {
+          "promotionList": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PromotionResponse"
+            }
+          }
+        }
+      },
+      "PromotionResponse": {
+        "required": [
+          "id",
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          }
+        }
+      },
+      "ContactCreditBalanceResponse": {
+        "type": "object",
+        "properties": {
+          "balance": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "GuestListResponse": {
+        "required": [
+          "guestList"
+        ],
+        "type": "object",
+        "properties": {
+          "guestList": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GuestResponse"
+            }
+          }
+        }
+      },
+      "PiggyShopListResponse": {
+        "required": [
+          "shopList"
+        ],
+        "type": "object",
+        "properties": {
+          "shopList": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PiggyShopResponse"
+            }
+          }
+        }
+      },
+      "PiggyShopResponse": {
+        "required": [
+          "name",
+          "shopId"
+        ],
+        "type": "object",
+        "properties": {
+          "shopId": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
