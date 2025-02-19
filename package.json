@@ -30,6 +30,7 @@
 		"@caspeco/casper-ui-library.components.flex": "^1.1.35",
 		"@caspeco/casper-ui-library.components.heading": "^1.1.35",
 		"@caspeco/casper-ui-library.components.list": "^0.1.35",
+		"@caspeco/casper-ui-library.components.modal": "^1.1.43",
 		"@caspeco/casper-ui-library.components.table": "^3.1.6",
 		"@caspeco/casper-ui-library.components.text": "^1.1.24",
 		"raygun4js": "^3.1.3",
