@@ -135,6 +135,9 @@ const GuestModal = ({
 		name: guest?.name ?? "",
     msisdn: guest?.msisdn ?? "",
 	});
+
+  const [rewards, setRewards] = useState<RewardResponse>();
+
 	const [isSaving, setIsSaving] = useState(false);
 
 	const { showToast } = useToast();
@@ -144,16 +147,7 @@ const GuestModal = ({
 			return;
 		}
 
-		setGuestForUpdate({
-			name: guest.name,
-      msisdn: guest.msisdn ?? "",
-		});
-	}, [guest]);
-
-  const [rewards, setRewards] = useState<RewardResponse>();
-
-
-	const getRewards = async () => {
+    const getRewards = async () => {
       if (!guest) {
         return;
       }
@@ -161,6 +155,25 @@ const GuestModal = ({
 
 			setRewards(response.data.rewardList);
 		};
+
+    getRewards().catch(console.error);
+
+		setGuestForUpdate({
+			name: guest.name,
+      msisdn: guest.msisdn ?? "",
+		});
+	}, [guest]);
+
+  const deleteUser = async () => {
+      if (!guest) {
+        return;
+      }
+      const response = await api.v1.deleteGuest({guestIdentifier: guest.identifier});
+
+      if(response.ok) {
+        onClose();
+      }
+    }
 
 	const updateGuest = async () => {
 		if (!guest) {
@@ -226,8 +239,6 @@ const GuestModal = ({
 		},
 	];
 
-  getRewards().catch(console.error);
-
 	return (
 		<Modal isOpen={guest != undefined} onClose={onClose}>
 			<ModalHeader
@@ -275,6 +286,9 @@ const GuestModal = ({
 				<Stack direction="row" spacing={ThemeSpaceVariable.Small}>
 					<Button variant="ghost" onClick={onClose}>
 						Avbryt
+					</Button>
+          <Button variant="secondary" onClick={deleteUser}>
+						Radera användare
 					</Button>
 					<Button
 						variant="primary"
