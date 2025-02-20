@@ -76,6 +76,16 @@ export default function GuestService() {
 		});
 	};
 
+  const onGuestDeleted = () => {
+    const getGuests = async () => {
+			const response = await api.v1.getGuests();
+
+			setGuests(response.data.guestList);
+		};
+
+		getGuests().catch(console.error);
+  }
+
 	const onClose = () => {
 		setEditGuest(undefined);
 	};
@@ -110,7 +120,7 @@ export default function GuestService() {
 					/>
 				</Table>
 			</Box>
-			<GuestModal guest={editGuest} onClose={onClose} onGuestUpdated={onGuestUpdated} />
+			<GuestModal guest={editGuest} onClose={onClose} onGuestUpdated={onGuestUpdated} onGuestDeleted={onGuestDeleted} />
 		</>
 	);
 }
@@ -124,10 +134,12 @@ const GuestModal = ({
 	guest,
 	onClose,
 	onGuestUpdated,
+  onGuestDeleted,
 }: {
 	guest: GuestResponse | undefined;
 	onClose: () => void;
 	onGuestUpdated: (identifier: string, guest: GuestForUpdate) => void;
+  onGuestDeleted: () => void;
 }) => {
 	const api = getGuestApi();
 
@@ -170,6 +182,13 @@ const GuestModal = ({
       }
       try {
         await api.v1.deleteGuest(guest.identifier);
+        showToast({
+          title: "Gäst raderad",
+          description: "Gästen har raderats.",
+          type: "success",
+          duration: 2000,
+        });
+        onGuestDeleted();
         onClose();
       } catch (error) {
         setIsSaving(false);
@@ -193,7 +212,7 @@ const GuestModal = ({
 				title: "Gäst uppdaterad",
 				description: "Gästen har uppdaterats.",
 				type: "success",
-				duration: 1000,
+				duration: 2000,
 			});
 			onGuestUpdated(guest.identifier, guestForUpdate);
 			onClose();
