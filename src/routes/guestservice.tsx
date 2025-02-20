@@ -18,6 +18,7 @@ import { Stack } from "@caspeco/casper-ui-library.components.stack";
 import { Table, TableContent, TableToolbar } from "@caspeco/casper-ui-library.components.table";
 import { useToast } from "@caspeco/casper-ui-library.components.toast";
 import { useEffect, useMemo, useState } from "react";
+import { Badge } from "@caspeco/casper-ui-library.components.badge";
 
 export default function GuestService() {
 	const api = getGuestApi();
@@ -196,18 +197,19 @@ const GuestModal = ({
 		{
 			accessorKey: "status",
       cell: (info) => {
-        if (info.getValue() === 'IN_STOCK') {
+        if (info.getValue() === 'REDEEMED') {
           return (
             <Badge.Success>
-              <>In stock</>
+              <>Redeemed</>
             </Badge.Success>
           );
+        } else if (info.getValue() === 'EXPIRED') {
+          return (
+            <Badge.Error>
+              <>Expired</>
+            </Badge.Error>
+          );
         }
-        return (
-          <Badge.Error>
-            <>Out of stock</>
-          </Badge.Error>
-        );
       },
 			header: "Status",
 		},

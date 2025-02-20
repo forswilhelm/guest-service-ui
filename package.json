@@ -26,6 +26,7 @@
 	"dependencies": {
 		"@caspeco/casper-ui-library.base-ui.theme": "^2.4.14",
 		"@caspeco/casper-ui-library.components.alert": "^1.2.36",
+		"@caspeco/casper-ui-library.components.badge": "^1.0.35",
 		"@caspeco/casper-ui-library.components.box": "^2.1.35",
 		"@caspeco/casper-ui-library.components.button": "^2.1.43",
 		"@caspeco/casper-ui-library.components.flex": "^1.1.35",
