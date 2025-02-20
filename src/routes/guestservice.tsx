@@ -1,11 +1,12 @@
 import { getGuestApi } from "@/api/guest-api";
-import { GuestResponse } from "@/GuestApiTypes";
+import { GuestResponse, RewardResponse } from "@/GuestApiTypes";
 import { ThemeSpaceVariable } from "@caspeco/casper-ui-library.base-ui.theme";
 import { Box } from "@caspeco/casper-ui-library.components.box";
 import { Button } from "@caspeco/casper-ui-library.components.button";
 import { Flex } from "@caspeco/casper-ui-library.components.flex";
 import { FormControl, FormLabel } from "@caspeco/casper-ui-library.components.formcontrol";
 import { Input } from "@caspeco/casper-ui-library.components.input";
+import { Text } from "@caspeco/casper-ui-library.components.text";
 import {
 	Modal,
 	ModalBody,
@@ -65,7 +66,7 @@ export default function GuestService() {
 		setGuests((guests) => {
 			const updatedGuests = guests.map((g) => {
 				if (g.identifier === identifier) {
-					return { ...g, name: guest.name };
+					return { ...g, name: guest.name, msisdn: guest.msisdn };
 				}
 				return g;
 			});
@@ -115,6 +116,7 @@ export default function GuestService() {
 
 type GuestForUpdate = {
 	name: string;
+  msisdn: string,
 };
 
 const GuestModal = ({
@@ -130,6 +132,7 @@ const GuestModal = ({
 
 	const [guestForUpdate, setGuestForUpdate] = useState<GuestForUpdate>({
 		name: guest?.name ?? "",
+    msisdn: guest?.msisdn ?? "",
 	});
 	const [isSaving, setIsSaving] = useState(false);
 
@@ -142,8 +145,21 @@ const GuestModal = ({
 
 		setGuestForUpdate({
 			name: guest.name,
+      msisdn: guest.msisdn ?? "",
 		});
 	}, [guest]);
+
+  const [rewards, setRewards] = useState<RewardResponse>();
+
+
+	const getRewards = async () => {
+      if (!guest) {
+        return;
+      }
+			const response = await api.v1.collectVouchers({guestIdentifier: guest.identifier});
+
+			setRewards(response.data.rewardList);
+		};
 
 	const updateGuest = async () => {
 		if (!guest) {
@@ -154,6 +170,7 @@ const GuestModal = ({
 		try {
 			await api.v1.updateGuest(guest.identifier, {
 				name: guestForUpdate.name,
+        msisdn: guestForUpdate.msisdn,
 			});
 
 			showToast({
@@ -171,6 +188,42 @@ const GuestModal = ({
 		setIsSaving(false);
 	};
 
+  const columns = [
+		{
+			accessorKey: "name",
+			header: "Namn",
+		},
+		{
+			accessorKey: "status",
+      cell: (info) => {
+        if (info.getValue() === 'IN_STOCK') {
+          return (
+            <Badge.Success>
+              <>In stock</>
+            </Badge.Success>
+          );
+        }
+        return (
+          <Badge.Error>
+            <>Out of stock</>
+          </Badge.Error>
+        );
+      },
+			header: "Status",
+		},
+		{
+			accessorKey: "expiresAt",
+			header: "Utgår",
+			// todo: type this corectly
+			// eslint-disable-next-line @typescript-eslint/no-explicit-any
+			cell: (info: any) => {
+				// eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
+				const date = new Date(info.getValue()).toLocaleDateString();
+				return <>{date}</>;
+			},
+		},
+	];
+
 	return (
 		<Modal isOpen={guest != undefined} onClose={onClose}>
 			<ModalHeader
@@ -185,7 +238,13 @@ const GuestModal = ({
 			<ModalBody px={ThemeSpaceVariable.Medium} pb={ThemeSpaceVariable.Medium}>
 				{guest && (
 					<Flex direction="column" gap={ThemeSpaceVariable.Medium}>
-						<FormControl>
+						<FormControl isReadOnly>
+							<FormLabel>E-post</FormLabel>
+							<Input value={guest.emailAddress} />
+              <FormLabel>Guest ID</FormLabel>
+              <Input value={guest.identifier} />
+						</FormControl>
+            <FormControl>
 							<FormLabel>Namn</FormLabel>
 							<Input
 								value={guestForUpdate.name}
@@ -193,13 +252,20 @@ const GuestModal = ({
 									setGuestForUpdate({ ...guestForUpdate, name: ev.target.value });
 								}}
 							/>
-						</FormControl>
-						<FormControl isReadOnly>
-							<FormLabel>E-post</FormLabel>
-							<Input value={guest.emailAddress} />
+              <FormLabel>Telefonnummer</FormLabel>
+							<Input
+								value={guestForUpdate.msisdn}
+								onChange={(ev) => {
+									setGuestForUpdate({ ...guestForUpdate, msisdn: ev.target.value });
+								}}
+							/>
 						</FormControl>
 					</Flex>
 				)}
+          <Text fontWeight="medium">Rewards</Text>
+          <Table data={rewards ?? []} columns={columns} localeString="sv-SE">
+					<TableContent />
+				</Table>
 			</ModalBody>
 			<ModalFooter display="flex" justifyContent="flex-end" p={ThemeSpaceVariable.Medium}>
 				<Stack direction="row" spacing={ThemeSpaceVariable.Small}>
@@ -214,6 +280,14 @@ const GuestModal = ({
 						}}
 					>
 						Spara
+					</Button>
+          <Button
+						variant="secondary"
+						onClick={() => {
+							getRewards().catch(console.error);
+						}}
+					>
+						Hämta rewards
 					</Button>
 				</Stack>
 			</ModalFooter>

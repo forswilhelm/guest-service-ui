@@ -36,7 +36,7 @@
 		"@caspeco/casper-ui-library.components.modal": "^1.1.43",
 		"@caspeco/casper-ui-library.components.stack": "^1.1.38",
 		"@caspeco/casper-ui-library.components.table": "^3.1.6",
-		"@caspeco/casper-ui-library.components.text": "^1.1.24",
+		"@caspeco/casper-ui-library.components.text": "^1.1.38",
 		"@caspeco/casper-ui-library.components.toast": "^1.3.44",
 		"raygun4js": "^3.1.3",
 		"react": "^18.3.1",
