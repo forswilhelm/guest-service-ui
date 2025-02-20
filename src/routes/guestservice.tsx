@@ -168,10 +168,12 @@ const GuestModal = ({
       if (!guest) {
         return;
       }
-      const response = await api.v1.deleteGuest({guestIdentifier: guest.identifier});
-
-      if(response.ok) {
+      try {
+        await api.v1.deleteGuest(guest.identifier);
         onClose();
+      } catch (error) {
+        setIsSaving(false);
+        throw error;
       }
     }
 
@@ -287,7 +289,9 @@ const GuestModal = ({
 					<Button variant="ghost" onClick={onClose}>
 						Avbryt
 					</Button>
-          <Button variant="secondary" onClick={deleteUser}>
+          <Button variant="secondary" onClick={() => {
+             deleteUser().catch(console.error);
+             }}>
 						Radera användare
 					</Button>
 					<Button
