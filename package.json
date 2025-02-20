@@ -32,6 +32,7 @@
 		"@caspeco/casper-ui-library.components.flex": "^1.1.35",
 		"@caspeco/casper-ui-library.components.formcontrol": "^1.1.44",
 		"@caspeco/casper-ui-library.components.heading": "^1.1.35",
+		"@caspeco/casper-ui-library.components.icon": "^3.0.25",
 		"@caspeco/casper-ui-library.components.input": "^1.1.40",
 		"@caspeco/casper-ui-library.components.list": "^0.1.35",
 		"@caspeco/casper-ui-library.components.modal": "^1.1.43",

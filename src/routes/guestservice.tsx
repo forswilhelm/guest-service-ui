@@ -19,6 +19,7 @@ import { Table, TableContent, TableToolbar } from "@caspeco/casper-ui-library.co
 import { useToast } from "@caspeco/casper-ui-library.components.toast";
 import { useEffect, useMemo, useState } from "react";
 import { Badge } from "@caspeco/casper-ui-library.components.badge";
+import { Icon } from "@caspeco/casper-ui-library.components.icon";
 
 export default function GuestService() {
 	const api = getGuestApi();
@@ -308,7 +309,7 @@ const GuestModal = ({
 					<Button variant="ghost" onClick={onClose}>
 						Avbryt
 					</Button>
-          <Button variant="secondary" onClick={() => {
+          <Button variant="secondary" rightIcon={Icon.Forward} onClick={() => {
              deleteUser().catch(console.error);
              }}>
 						Radera användare

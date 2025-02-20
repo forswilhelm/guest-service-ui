@@ -27,11 +27,6 @@ export const useNavigation = () => {
 			isActiveUrlPattern: "/(?!.)",
 		},
 		{
-			text: "Example",
-			href: "/example",
-			icon: "Remove",
-		},
-		{
 			text: "GuestService",
 			href: "/guest-service",
 			icon: "Users",
