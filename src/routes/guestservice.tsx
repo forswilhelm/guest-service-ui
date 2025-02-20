@@ -226,6 +226,8 @@ const GuestModal = ({
 		},
 	];
 
+  getRewards().catch(console.error);
+
 	return (
 		<Modal isOpen={guest != undefined} onClose={onClose}>
 			<ModalHeader
@@ -264,7 +266,7 @@ const GuestModal = ({
 						</FormControl>
 					</Flex>
 				)}
-          <Text fontWeight="medium">Rewards</Text>
+          <Text fontWeight="medium">Vouchers</Text>
           <Table data={rewards ?? []} columns={columns} localeString="sv-SE">
 					<TableContent />
 				</Table>
@@ -282,14 +284,6 @@ const GuestModal = ({
 						}}
 					>
 						Spara
-					</Button>
-          <Button
-						variant="secondary"
-						onClick={() => {
-							getRewards().catch(console.error);
-						}}
-					>
-						Hämta rewards
 					</Button>
 				</Stack>
 			</ModalFooter>
