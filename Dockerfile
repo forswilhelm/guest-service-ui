@@ -1,7 +1,7 @@
 ARG env="dev"
 ARG basepath=""
 
-FROM node:22-alpine AS node
+FROM node:23-alpine AS node
 ARG env
 ARG basepath
 
